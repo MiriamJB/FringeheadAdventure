@@ -1,26 +1,17 @@
 package object;
 
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
+import entity.Entity;
 import main.GamePanel;
 
-public class OBJ_Door extends SuperObject{
-	
-	GamePanel gp;
+public class OBJ_Door extends Entity{
 	
 	public OBJ_Door(GamePanel gp) {
+		super(gp);
 		name = "door";
+		down0 = setup("/objects/Door_Closed");
 		collision = true;
 		solidArea.setBounds(0, 17, 64, 64-17);
-		
-		try {
-			image = ImageIO.read(getClass().getResourceAsStream("/objects/Door_Closed.png"));
-			uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		solidAreaDefaultY = 17;
 	}
 
 }

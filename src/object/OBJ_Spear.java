@@ -1,24 +1,19 @@
 package object;
 
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
+import entity.Entity;
 import main.GamePanel;
 
-public class OBJ_Spear extends SuperObject{
-	
-	GamePanel gp;
-	
-	public OBJ_Spear(GamePanel gp) {
-		name = "spear";
+public class OBJ_Spear extends Entity{
 		
-		try {
-			image = ImageIO.read(getClass().getResourceAsStream("/objects/Spear.png"));
-			uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public OBJ_Spear(GamePanel gp) {
+		super(gp);
+		type = type.WEAPON;
+		name = "spear";
+		down0 = setup("/objects/Spear");
+		attackValue = 1;
+		attackArea.width = 50;
+		attackArea.height = 50;
+		description = "[Spear]/A hand-crafted spear./Attack 1";
 	}
 
 }
